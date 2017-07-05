@@ -1,12 +1,14 @@
 package guru.springframework.service.jpa
 
+import guru.springframework.AbstractIntegrationTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.hasSize
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-class ProductServiceJpaDaoIT : AbstractJpaIntegrationTest() {
+@JpaIntegrationTest
+class ProductServiceJpaDaoIT : AbstractIntegrationTest() {
 
     @Autowired
     private lateinit var productService: guru.springframework.service.ProductService

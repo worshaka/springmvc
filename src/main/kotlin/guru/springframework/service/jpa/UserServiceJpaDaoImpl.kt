@@ -12,10 +12,13 @@ import javax.persistence.PersistenceUnit
 @Service
 @Profile("jpadao")
 class UserServiceJpaDaoImpl @Autowired constructor(
+
         private val encryptionService: EncryptionService,
 
         @field:PersistenceUnit
-        private val emf: EntityManagerFactory) : UserService {
+        private val emf: EntityManagerFactory
+
+) : UserService {
 
     override fun listAll(): List<User> = emf.createEntityManager().createQuery("from User",
             User::class.java).resultList.filter { it.enabled }

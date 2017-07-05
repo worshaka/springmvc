@@ -9,9 +9,7 @@ import javax.persistence.PersistenceUnit
 
 @Service
 @Profile("jpadao")
-class ProductServiceJpaDaoImpl constructor(
-        @field:PersistenceUnit
-        private val emf: EntityManagerFactory) : ProductService {
+class ProductServiceJpaDaoImpl constructor(@field:PersistenceUnit private val emf: EntityManagerFactory) : ProductService {
 
     override fun listAll(): List<Product> = emf.createEntityManager().createQuery("from Product",
             Product::class.java).resultList

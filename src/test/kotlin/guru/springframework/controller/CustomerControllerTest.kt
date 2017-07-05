@@ -102,6 +102,7 @@ class CustomerControllerTest {
                 .param("lastName", customer.lastName)
                 .param("email", customer.email)
                 .param("phoneNumber", customer.phoneNumber))
+                // FIXME: use embedded Address object
 //                .param("addressLine1", customer.addressLine1)
 //                .param("addressLine2", customer.addressLine2)
 //                .param("city", customer.city)

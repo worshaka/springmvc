@@ -4,7 +4,6 @@ import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.OneToMany
 
-
 @Entity
 class Cart : AbstractEntity() {
 

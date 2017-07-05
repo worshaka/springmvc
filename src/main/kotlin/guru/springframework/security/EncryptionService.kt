@@ -1,6 +1,5 @@
 package guru.springframework.security
 
-
 interface EncryptionService {
 
     fun encryptPassword(plainText: String): String

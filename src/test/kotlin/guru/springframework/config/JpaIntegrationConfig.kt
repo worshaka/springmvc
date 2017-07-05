@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 
+@ComponentScan("guru.springframework")
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan("guru.springframework")
 open class JpaIntegrationConfig

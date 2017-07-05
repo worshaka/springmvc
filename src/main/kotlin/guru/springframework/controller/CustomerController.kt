@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod
 
 @Controller
 @RequestMapping("/customer")
-open class CustomerController @Autowired constructor(private val customerService: CustomerService) {
+class CustomerController @Autowired constructor(private val customerService: CustomerService) {
 
     @RequestMapping("/list", "/", "")
     fun listCustomers(model: Model): String {

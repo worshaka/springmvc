@@ -1,15 +1,17 @@
 package guru.springframework.service.jpa
 
+import guru.springframework.AbstractIntegrationTest
 import guru.springframework.domain.Address
 import guru.springframework.domain.Customer
-import guru.springframework.domain.User
 import guru.springframework.service.CustomerService
 import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.*
+import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.hasSize
 import org.junit.Test
 import javax.annotation.Resource
 
-open class CustomerServiceJpaDaoIT : AbstractJpaIntegrationTest() {
+@JpaIntegrationTest
+class CustomerServiceJpaDaoIT : AbstractIntegrationTest() {
 
     @Resource
     private lateinit var customerService: CustomerService

@@ -1,5 +1,6 @@
 package guru.springframework.domain
 
+import javax.persistence.CascadeType
 import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.OneToOne
@@ -17,7 +18,7 @@ class Customer(
         @field:Embedded
         var shippingAddress: Address? = null,
 
-        @field:OneToOne
+        @field:OneToOne(cascade = arrayOf(CascadeType.REMOVE))
         var user: User? = null
 
 ) : AbstractEntity() {

@@ -5,9 +5,6 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import java.math.BigDecimal
 
-/**
- * Created by travis on 6/13/17.
- */
 class ProductTest {
 
     @Test

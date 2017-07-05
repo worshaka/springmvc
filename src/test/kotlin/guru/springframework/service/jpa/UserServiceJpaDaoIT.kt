@@ -1,15 +1,19 @@
 package guru.springframework.service.jpa
 
-import guru.springframework.domain.*
+import guru.springframework.AbstractIntegrationTest
+import guru.springframework.domain.Cart
+import guru.springframework.domain.CartDetail
+import guru.springframework.domain.Customer
+import guru.springframework.domain.User
 import guru.springframework.service.ProductService
 import guru.springframework.service.UserService
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
 import org.junit.Test
-import java.math.BigDecimal
 import javax.annotation.Resource
 
-class UserServiceJpaDaoIT : AbstractJpaIntegrationTest() {
+@JpaIntegrationTest
+class UserServiceJpaDaoIT : AbstractIntegrationTest() {
 
     @Resource
     private lateinit var userService: UserService
