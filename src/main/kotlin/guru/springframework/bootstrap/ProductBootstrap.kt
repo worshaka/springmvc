@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 import java.math.BigDecimal
 
 @Component
-open class ProductBootstrap @Autowired constructor(private val productService: ProductService) : AbstractBootstrap() {
+open class ProductBootstrap constructor(private val productService: ProductService) : AbstractBootstrap() {
 
     val products = listOf(
             Product("Product 1", BigDecimal("12.99"), "http://example.com/product1"),

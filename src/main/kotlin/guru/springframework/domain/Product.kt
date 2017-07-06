@@ -9,7 +9,7 @@ class Product(
         var price: BigDecimal? = null,
         var imageUrl: String? = null
 
-) : AbstractEntity() {
+) : AbstractAuditableEntity() {
 
     constructor(id: Int, description: String? = null, price: BigDecimal? = null, imageUrl: String? = null)
             : this(description, price, imageUrl) {

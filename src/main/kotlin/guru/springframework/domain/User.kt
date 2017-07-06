@@ -18,7 +18,7 @@ class User(
         @field:OneToOne(cascade = arrayOf(CascadeType.ALL), orphanRemoval = true)
         var cart: Cart? = null
 
-) : AbstractEntity() {
+) : AbstractAuditableEntity() {
 
     var encryptedPassword: String? = null
 

@@ -10,6 +10,8 @@ class CartDetail(
         @field:ManyToOne
         private val cart: Cart,
 
-        @field:OneToOne val product: Product
+        @field:OneToOne val product: Product,
+
+        val quantity: Int
 
 ) : AbstractEntity()

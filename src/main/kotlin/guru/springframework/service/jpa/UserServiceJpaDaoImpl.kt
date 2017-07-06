@@ -11,7 +11,7 @@ import javax.persistence.PersistenceUnit
 
 @Service
 @Profile("jpadao")
-class UserServiceJpaDaoImpl @Autowired constructor(
+class UserServiceJpaDaoImpl constructor(
 
         private val encryptionService: EncryptionService,
 

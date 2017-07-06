@@ -2,7 +2,6 @@ package guru.springframework.controller
 
 import guru.springframework.domain.Customer
 import guru.springframework.service.CustomerService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PathVariable
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod
 
 @Controller
 @RequestMapping("/customer")
-class CustomerController @Autowired constructor(private val customerService: CustomerService) {
+class CustomerController constructor(private val customerService: CustomerService) {
 
     @RequestMapping("/list", "/", "")
     fun listCustomers(model: Model): String {

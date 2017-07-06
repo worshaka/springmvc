@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component
-open class UserBootstrap @Autowired constructor(private val userService: UserService) : AbstractBootstrap() {
+open class UserBootstrap constructor(private val userService: UserService) : AbstractBootstrap() {
 
     val users = listOf(
             User(

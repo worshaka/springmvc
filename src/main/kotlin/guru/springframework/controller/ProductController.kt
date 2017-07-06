@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod
 
 @Controller
 @RequestMapping("/product")
-class ProductController @Autowired constructor(private val productService: ProductService) {
+class ProductController constructor(private val productService: ProductService) {
 
     @RequestMapping("/list")
     fun listProducts(model: Model): String {

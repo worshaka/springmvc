@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 
 @Service
 @Profile("stub")
-class UserServiceStubImpl @Autowired constructor(private val encryptionService: EncryptionService)
+class UserServiceStubImpl constructor(private val encryptionService: EncryptionService)
     : AbstractServiceStub<User>(), UserService {
 
     override fun saveOrUpdate(entity: User): User {

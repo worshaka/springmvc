@@ -5,12 +5,12 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.hasSize
 import org.junit.Test
-import org.springframework.beans.factory.annotation.Autowired
+import javax.annotation.Resource
 
 @JpaIntegrationTest
 class ProductServiceJpaDaoIT : AbstractIntegrationTest() {
 
-    @Autowired
+    @Resource
     private lateinit var productService: guru.springframework.service.ProductService
 
     @Test

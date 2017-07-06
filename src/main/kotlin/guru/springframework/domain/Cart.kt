@@ -5,7 +5,7 @@ import javax.persistence.Entity
 import javax.persistence.OneToMany
 
 @Entity
-class Cart : AbstractEntity() {
+class Cart : AbstractAuditableEntity() {
 
     @OneToMany(cascade = arrayOf(CascadeType.ALL), mappedBy = "cart", orphanRemoval = true)
     private val cartDetails: MutableList<CartDetail> = ArrayList()
