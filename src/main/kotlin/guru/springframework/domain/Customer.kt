@@ -1,9 +1,6 @@
 package guru.springframework.domain
 
-import javax.persistence.CascadeType
-import javax.persistence.Embedded
-import javax.persistence.Entity
-import javax.persistence.OneToOne
+import javax.persistence.*
 
 @Entity
 class Customer(
@@ -37,4 +34,11 @@ class Customer(
 
         this.id = id
     }
+
+    @OneToMany
+    private val orders = ArrayList<Order>()
+
+    fun orders(): List<Order> = orders
+
+    fun addOrder(order: Order) = orders.add(order)
 }
