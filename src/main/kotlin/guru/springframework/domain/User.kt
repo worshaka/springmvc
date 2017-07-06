@@ -10,15 +10,13 @@ class User(
 
         @field:Transient
         var password: String? = null,
-
         customer: Customer? = null,
-
         var enabled: Boolean = true,
 
         @field:OneToOne(cascade = arrayOf(CascadeType.ALL), orphanRemoval = true)
         var cart: Cart? = null
 
-) : AbstractAuditableEntity() {
+) : AbstractTimeStampEntity() {
 
     var encryptedPassword: String? = null
 

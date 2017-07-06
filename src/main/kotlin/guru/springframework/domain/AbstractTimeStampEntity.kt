@@ -2,16 +2,16 @@ package guru.springframework.domain
 
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
-import java.time.LocalDateTime
+import java.sql.Timestamp
 import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
-abstract class AbstractAuditableEntity(
+abstract class AbstractTimeStampEntity(
 
         @field:CreationTimestamp
-        val dateCreated: LocalDateTime,
+        var created: Timestamp = Timestamp(System.currentTimeMillis()),
 
         @field:UpdateTimestamp
-        val dateUpdated: LocalDateTime
+        val modified: Timestamp = Timestamp(System.currentTimeMillis())
 
 ) : AbstractEntity()
