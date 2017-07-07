@@ -20,25 +20,10 @@ class Customer(
 
 ) : AbstractEntity() {
 
-    constructor(
-            id: Int,
-            firstName: String? = null,
-            lastName: String? = null,
-            email: String? = null,
-            phoneNumber: String? = null,
-            billingAddress: Address? = null,
-            shippingAddress: Address? = null,
-            user: User? = null
-
-    ) : this(firstName, lastName, email, phoneNumber, billingAddress, shippingAddress, user) {
-
-        this.id = id
-    }
-
     @OneToMany
-    private val orders = ArrayList<Order>()
+    private val orders: MutableList<CustomerOrder> = ArrayList()
 
-    fun orders(): List<Order> = orders
+    fun orders(): List<CustomerOrder> = orders
 
-    fun addOrder(order: Order) = orders.add(order)
+    fun addOrder(order: CustomerOrder) = orders.add(order)
 }

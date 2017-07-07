@@ -92,8 +92,7 @@ class UserServiceJpaDaoIT : AbstractIntegrationTest() {
     @Test fun `should save user with cart details`() {
         val expectedProduct = productService.getById(1)
         val expectedQuantity = 2
-        val cart = Cart()
-        cart.addCartDetail(CartDetail(cart, expectedProduct, 2))
+        val cart = Cart().apply { addCartDetail(CartDetail(expectedProduct, 2)) }
 
         val user = userService.saveOrUpdate(User("username", "password", cart = cart))
 

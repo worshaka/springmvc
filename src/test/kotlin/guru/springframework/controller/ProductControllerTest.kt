@@ -33,9 +33,11 @@ class ProductControllerTest {
         mockMvc = standaloneSetup(productController).build()
     }
 
+    private fun createProduct(id: Int) = Product().apply { this.id = id }
+
     @Test
     fun `should list all products when a web request to list all products is received`() {
-        val expectedProducts = listOf(Product(1), Product(2))
+        val expectedProducts = listOf(createProduct(1), createProduct(2))
         whenever(productService.listAll()).thenReturn(expectedProducts)
 
         mockMvc.perform(get("/product/list"))
@@ -47,7 +49,7 @@ class ProductControllerTest {
     @Test
     fun `should view a product when a web request for a specific product is received`() {
         val productId = 1
-        val expectedProduct = Product(productId, "description", TEN, "imageURL")
+        val expectedProduct = Product("description", TEN, "imageURL").apply { id = productId }
         whenever(productService.getById(productId)).thenReturn(expectedProduct)
 
         mockMvc.perform(get("/product/view/$productId"))
@@ -69,7 +71,7 @@ class ProductControllerTest {
     @Test
     fun `should navigate to the product form when editing an existing product`() {
         val productId = 1
-        val product = Product(productId)
+        val product = createProduct(productId)
         whenever(productService.getById(productId)).thenReturn(product)
 
         mockMvc.perform(get("/product/edit/$productId"))
@@ -92,7 +94,7 @@ class ProductControllerTest {
     @Test
     fun `should redirect to the product view when saving a product`() {
         val productId = 1
-        val product = Product(productId, "description", TEN, "imageURL")
+        val product = Product("description", TEN, "imageURL").apply { id = productId }
         whenever(productService.saveOrUpdate(product)).thenReturn(product)
 
         mockMvc.perform(post("/product")

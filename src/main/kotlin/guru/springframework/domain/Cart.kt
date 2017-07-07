@@ -12,7 +12,10 @@ class Cart : AbstractTimeStampEntity() {
 
     fun cartDetails(): List<CartDetail> = cartDetails
 
-    fun addCartDetail(cartDetail: CartDetail) = cartDetails.add(cartDetail)
+    fun addCartDetail(cartDetail: CartDetail) {
+        cartDetail.cart = this
+        cartDetails.add(cartDetail)
+    }
 
     fun removeCartDetail(cartDetail: CartDetail) = cartDetails.remove(cartDetail)
 }

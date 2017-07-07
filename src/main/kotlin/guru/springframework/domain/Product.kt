@@ -9,10 +9,4 @@ class Product(
         var price: BigDecimal? = null,
         var imageUrl: String? = null
 
-) : AbstractTimeStampEntity() {
-
-    constructor(id: Int, description: String? = null, price: BigDecimal? = null, imageUrl: String? = null)
-            : this(description, price, imageUrl) {
-        this.id = id
-    }
-}
+) : AbstractTimeStampEntity()

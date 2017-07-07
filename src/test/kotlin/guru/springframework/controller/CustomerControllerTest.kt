@@ -33,9 +33,11 @@ class CustomerControllerTest {
         mockMvc = standaloneSetup(customerController).build()
     }
 
+    private fun createCustomer(id: Int) = Customer().apply { this.id = id }
+
     @Test
     fun `should list all customers when a web request to list all customers is received`() {
-        val customerList = listOf(Customer(1), Customer(2))
+        val customerList = listOf(createCustomer(1), createCustomer(2))
         whenever(customerService.listAll()).thenReturn(customerList)
 
         mockMvc.perform(get("/customer/list"))
@@ -47,7 +49,7 @@ class CustomerControllerTest {
     @Test
     fun `should view a customer when a web request for a specific customer is received`() {
         val customerId = 1
-        val customer = Customer(customerId)
+        val customer = createCustomer(customerId)
         whenever(customerService.getById(customerId)).thenReturn(customer)
 
         mockMvc.perform(get("/customer/view/$customerId"))
@@ -69,7 +71,7 @@ class CustomerControllerTest {
     @Test
     fun `should navigate to the customer form when editing an existing customer`() {
         val customerId = 1
-        val customer = Customer(customerId)
+        val customer = createCustomer(customerId)
         whenever(customerService.getById(customerId)).thenReturn(customer)
 
         mockMvc.perform(get("/customer/edit/$customerId"))
@@ -92,8 +94,7 @@ class CustomerControllerTest {
     @Test
     fun `should redirect to the customer view when saving a product`() {
         val customerId = 1
-        val customer = Customer(customerId, "John", "Smith", "email", "phone",
-                Address("billingAddress", null, "city", "state", "zip"))
+        val customer = Customer("John", "Smith", "email", "phone", Address("billingAddress", null, "city", "state", "zip")).apply { id = customerId }
         whenever(customerService.saveOrUpdate(customer)).thenReturn(customer)
 
         mockMvc.perform(post("/customer")

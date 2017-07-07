@@ -5,14 +5,15 @@ import javax.persistence.ManyToOne
 import javax.persistence.OneToOne
 
 @Entity
-class CartDetail(
+class OrderLine(
 
         @field:OneToOne
         val product: Product,
+
         val quantity: Int
 
-) : AbstractTimeStampEntity() {
+) : AbstractEntity() {
 
-        @field:ManyToOne
-        var cart: Cart? = null
+    @ManyToOne
+    var order: CustomerOrder? = null
 }
