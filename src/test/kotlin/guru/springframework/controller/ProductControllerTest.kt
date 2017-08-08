@@ -5,8 +5,8 @@ import guru.springframework.domain.Product
 import guru.springframework.service.ProductService
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations.initMocks
@@ -27,7 +27,7 @@ class ProductControllerTest {
 
     private lateinit var mockMvc: MockMvc
 
-    @Before
+    @BeforeEach
     fun setup() {
         initMocks(this)
         mockMvc = standaloneSetup(productController).build()

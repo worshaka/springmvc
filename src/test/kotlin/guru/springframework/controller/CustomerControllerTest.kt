@@ -6,8 +6,8 @@ import guru.springframework.domain.Customer
 import guru.springframework.service.CustomerService
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations.initMocks
@@ -27,7 +27,7 @@ class CustomerControllerTest {
 
     private lateinit var mockMvc: MockMvc
 
-    @Before
+    @BeforeEach
     fun setup() {
         initMocks(this)
         mockMvc = standaloneSetup(customerController).build()
@@ -35,8 +35,7 @@ class CustomerControllerTest {
 
     private fun createCustomer(id: Int) = Customer().apply { this.id = id }
 
-    @Test
-    fun `should list all customers when a web request to list all customers is received`() {
+    @Test fun `should list all customers when a web request to list all customers is received`() {
         val customerList = listOf(createCustomer(1), createCustomer(2))
         whenever(customerService.listAll()).thenReturn(customerList)
 

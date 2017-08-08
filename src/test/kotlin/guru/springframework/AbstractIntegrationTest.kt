@@ -1,7 +1,7 @@
 package guru.springframework
 
-import org.junit.runner.RunWith
-import org.springframework.test.context.junit4.SpringRunner
+import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.test.context.junit.jupiter.SpringExtension
 
-@RunWith(SpringRunner::class)
+@ExtendWith(SpringExtension::class)
 abstract class AbstractIntegrationTest

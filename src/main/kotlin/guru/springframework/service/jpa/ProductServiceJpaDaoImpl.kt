@@ -6,10 +6,17 @@ import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 import javax.persistence.EntityManagerFactory
 import javax.persistence.PersistenceUnit
+import javax.validation.Validator
 
 @Service
 @Profile("jpadao")
-class ProductServiceJpaDaoImpl constructor(@field:PersistenceUnit private val emf: EntityManagerFactory) : ProductService {
+class ProductServiceJpaDaoImpl(
+
+        @field:PersistenceUnit
+        private val emf: EntityManagerFactory,
+        private val validator: Validator
+
+) : ProductService {
 
     override fun listAll(): List<Product> = emf.createEntityManager().createQuery("from Product",
             Product::class.java).resultList
@@ -26,6 +33,11 @@ class ProductServiceJpaDaoImpl constructor(@field:PersistenceUnit private val em
     }
 
     override fun saveOrUpdate(entity: Product): Product {
+        val validationErrors = validator.validate(entity)
+        if (!validationErrors.isEmpty()) {
+            val validationErrorMessages = validationErrors.joinToString { it.message }
+            throw IllegalStateException("Product contains validation errors: $validationErrorMessages")
+        }
         val em = emf.createEntityManager()
         em.transaction.begin()
         val savedProduct = em.merge(entity)

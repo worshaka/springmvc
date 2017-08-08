@@ -7,7 +7,9 @@ import guru.springframework.service.CustomerService
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.hasSize
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertAll
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
 import javax.annotation.Resource
 
 @JpaIntegrationTest
@@ -32,15 +34,17 @@ class CustomerServiceJpaDaoIT : AbstractIntegrationTest() {
         assertThat(customer.id, `is`(customerId))
     }
 
-    @Test
-    fun `should delete customer`() {
+    @Test fun `should delete customer`() {
         val customerId = 1
         val numOfCustomers = customerService.listAll().size
 
         val deletedCustomer = customerService.delete(customerId)
 
-        assertThat(deletedCustomer!!.id, `is`(customerId))
-        assertThat(customerService.listAll(), hasSize(numOfCustomers - 1))
+
+        assertAll(
+                Executable { assertThat(deletedCustomer!!.id, `is`(customerId)) },
+                Executable { assertThat(customerService.listAll(), hasSize(numOfCustomers - 1)) }
+        )
     }
 
     @Test
